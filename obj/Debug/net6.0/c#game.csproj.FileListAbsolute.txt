@@ -1,0 +1,5 @@
+C:\Users\nvhuy\Desktop\c#game\obj\Debug\net6.0\c#game.csproj.AssemblyReference.cache
+C:\Users\nvhuy\Desktop\c#game\obj\Debug\net6.0\c#game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nvhuy\Desktop\c#game\obj\Debug\net6.0\c#game.AssemblyInfoInputs.cache
+C:\Users\nvhuy\Desktop\c#game\obj\Debug\net6.0\c#game.AssemblyInfo.cs
+C:\Users\nvhuy\Desktop\c#game\obj\Debug\net6.0\c#game.csproj.CoreCompileInputs.cache
