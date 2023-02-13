@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 
 namespace c_game;
 
@@ -49,9 +44,8 @@ public class character_Class
     {
         this.init_Atk = updated_Atk;
     }
-    public void character_Movement(bool dir_Left, bool dir_Right, bool jumping,ref int jump_force)
+    public void character_Movement(bool dir_Left, bool dir_Right, ref bool jumping,ref int jump_force,ref bool on_PLatform)
     {
-
         if (dir_Left)
         {
             character_Box.Left -= init_Move_speed;
@@ -60,26 +54,28 @@ public class character_Class
         {
             character_Box.Left += init_Move_speed;
         }
-        if (jumping && !air_Borne && jump_force >= 0)
+        if (jumping && !air_Borne && jump_force >= 0)//start jumping
         {
             air_Borne = true;
+            on_PLatform = false;
             character_Box.Top -= init_Jump_Speed;
             jump_force -= 1;
+            jumping = false;
         }
-        if (air_Borne && jump_force >= 0)
+        else if (air_Borne && jump_force >= 0)//air borne jump up
         {
             character_Box.Top -= init_Jump_Speed;
             jump_force -= 1;
         }
-        if (air_Borne && jump_force < 0)
+        if (on_PLatform)
+        { 
+            air_Borne = false;
+            jump_force = 8;
+        }
+        if (air_Borne && jump_force < 0 && !on_PLatform)// fall
         {
             character_Box.Top += init_Jump_Speed;
-            if (character_Box.Top == 700 - character_Box.Height)
-            { 
-                air_Borne = false;
-                jump_force = 8;
-            }
-
         }
+        
     }
 };

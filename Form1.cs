@@ -1,17 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 namespace c_game;
 
 public partial class Form1 : Form
 {   
-    bool go_Left, go_Right, jumping;
+    bool go_Left, go_Right, jumping, on_PLatform = true;
     int jump_force = 8;
     public Form1()
     {
@@ -19,14 +10,20 @@ public partial class Form1 : Form
     }
     private void main_Game_Timer_Event(object sender, EventArgs e)
     {
-        main_Character.character_Movement(go_Left,go_Right,jumping,ref jump_force);
+        main_Character.character_Movement(go_Left,go_Right,ref jumping,ref jump_force, ref on_PLatform);
         foreach (Control ctrl in this.Controls)
         {
             if (ctrl is PictureBox)
             {
                 if ((string)ctrl.Tag == "platform")
                 {
-
+                    //Interact with platform
+                    if (main_Character.character_Box.Bounds.IntersectsWith(ctrl.Bounds))
+                    {
+                        main_Character.character_Box.Top = ctrl.Top - main_Character.character_Box.Height;
+                        jump_force = -1;
+                        on_PLatform = true;
+                    }
                 }
             }
         }
@@ -41,7 +38,7 @@ public partial class Form1 : Form
         {
             go_Right = true;
         }
-        if (e.KeyCode == Keys.Space )
+        if (e.KeyCode == Keys.Space && !jumping && on_PLatform)
         {
             jumping = true;
         }
@@ -57,7 +54,7 @@ public partial class Form1 : Form
         {
             go_Right = false;
         }
-        if (e.KeyCode == Keys.Space )
+        if (e.KeyCode == Keys.Space)
         {
             jumping = false;
         }

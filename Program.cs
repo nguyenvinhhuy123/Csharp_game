@@ -1,4 +1,3 @@
-
 namespace c_game;
 
 static class Program
