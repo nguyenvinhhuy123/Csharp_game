@@ -6,7 +6,7 @@ public class character_Class
     public System.Windows.Forms.PictureBox character_Box;
     private int init_Health = 100;
     private int init_Atk = 20;
-    private int init_Move_speed = 20;
+    private int init_Move_speed = 25;
     private int init_Jump_Speed = 30;
     private bool air_Borne = false; 
     public character_Class()
@@ -70,7 +70,7 @@ public class character_Class
         if (on_PLatform)
         { 
             air_Borne = false;
-            jump_force = 8;
+            jump_force = 10;
         }
         if (air_Borne && jump_force < 0 && !on_PLatform)// fall
         {

@@ -3,7 +3,7 @@ namespace c_game;
 public partial class Form1 : Form
 {   
     bool go_Left, go_Right, jumping, on_PLatform = true;
-    int jump_force = 8;
+    int jump_force = 10;
     public Form1()
     {
         InitializeComponent();
@@ -11,6 +11,8 @@ public partial class Form1 : Form
     private void main_Game_Timer_Event(object sender, EventArgs e)
     {
         main_Character.character_Movement(go_Left,go_Right,ref jumping,ref jump_force, ref on_PLatform);
+        if (bullet_1.Bullet_Visibility() == false) bullet_1_Random_Spawn_Handler();
+        bullet_1.bullet_Movement_Handler();
         foreach (Control ctrl in this.Controls)
         {
             if (ctrl is PictureBox)
@@ -23,6 +25,14 @@ public partial class Form1 : Form
                         main_Character.character_Box.Top = ctrl.Top - main_Character.character_Box.Height;
                         jump_force = -1;
                         on_PLatform = true;
+                    }
+                }
+                if ((string)ctrl.Tag == "bullet")
+                {
+                    if (main_Character.character_Box.Bounds.IntersectsWith(ctrl.Bounds))
+                    {
+                        game_Timer.Stop();
+                        MessageBox.Show("Game over!");
                     }
                 }
             }
@@ -59,5 +69,13 @@ public partial class Form1 : Form
             jumping = false;
         }
     }
-    
+    private void bullet_1_Random_Spawn_Handler()
+    {
+        var random_Generator =new Random();
+        int[] width_Random = {-50,1950};
+        int[] bullet_Speed_Random = {15,-15};
+        int width_Index = random_Generator.Next(width_Random.Length);
+        bullet_1.bullet_Box.Left = width_Random[width_Index];
+        bullet_1.set_Bullet_Speed(bullet_Speed_Random[width_Index]);
+    }
 }

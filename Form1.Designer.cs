@@ -9,6 +9,7 @@ partial class Form1
     private System.Windows.Forms.Timer game_Timer;
     private character_Class main_Character;
     private PlatForm main_Platform;
+    private bullet bullet_1, bullet_2, bullet_3;
     /// <summary>
     ///  Clean up any resources being used.
     /// </summary>
@@ -49,11 +50,20 @@ partial class Form1
         //PlatForm
         this.main_Platform = new PlatForm();
         this.Controls.Add(main_Platform.get_Platform_Box());
+        //Bullet
+        this.bullet_1 = new bullet();
+        this.Controls.Add(bullet_1.get_Bullet_Box());
+
+        this.bullet_2 = new bullet();
+        this.Controls.Add(bullet_1.get_Bullet_Box());
+
+        
         //key_event_Handler_initialize
         this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
         this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
+
+
         this.ResumeLayout(false);
     }
-
     #endregion
 }
