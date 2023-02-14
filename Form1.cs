@@ -32,7 +32,7 @@ public partial class Form1 : Form
                     if (main_Character.character_Box.Bounds.IntersectsWith(ctrl.Bounds))
                     {
                         game_Timer.Stop();
-                        MessageBox.Show("Game over!");
+                        game_Over();
                     }
                 }
             }
@@ -77,5 +77,14 @@ public partial class Form1 : Form
         int width_Index = random_Generator.Next(width_Random.Length);
         bullet_1.bullet_Box.Left = width_Random[width_Index];
         bullet_1.set_Bullet_Speed(bullet_Speed_Random[width_Index]);
+    }
+    private void game_Over()
+    {
+        var try_Again = MessageBox.Show("Try again??","BALLS",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+        if (try_Again == DialogResult.Yes)
+        {
+            //Restart game block
+        }
+        else this.Close();
     }
 }
