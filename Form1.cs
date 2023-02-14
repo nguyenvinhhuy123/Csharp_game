@@ -11,8 +11,10 @@ public partial class Form1 : Form
     private void main_Game_Timer_Event(object sender, EventArgs e)
     {
         main_Character.character_Movement(go_Left,go_Right,ref jumping,ref jump_force, ref on_PLatform);
-        if (bullet_1.Bullet_Visibility() == false) bullet_1_Random_Spawn_Handler();
+        if (bullet_1.Bullet_Visibility() == false) bullet_1.Random_Spawn_Handler();
         bullet_1.bullet_Movement_Handler();
+        if (bullet_2.Bullet_Visibility() == false) bullet_2.Random_Spawn_Handler();
+        bullet_2.bullet_Movement_Handler();
         foreach (Control ctrl in this.Controls)
         {
             if (ctrl is PictureBox)
@@ -69,22 +71,35 @@ public partial class Form1 : Form
             jumping = false;
         }
     }
-    private void bullet_1_Random_Spawn_Handler()
-    {
-        var random_Generator =new Random();
-        int[] width_Random = {-50,1950};
-        int[] bullet_Speed_Random = {15,-15};
-        int width_Index = random_Generator.Next(width_Random.Length);
-        bullet_1.bullet_Box.Left = width_Random[width_Index];
-        bullet_1.set_Bullet_Speed(bullet_Speed_Random[width_Index]);
-    }
     private void game_Over()
     {
         var try_Again = MessageBox.Show("Try again??","BALLS",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
         if (try_Again == DialogResult.Yes)
         {
             //Restart game block
+            game_Start();
         }
         else this.Close();
+    }
+    private void game_Start()
+    {
+        //reset character position and state
+        go_Left = false;
+        go_Right = false;
+        jumping = false;
+        on_PLatform = true;
+        main_Character.character_Box.Left = 800;
+        main_Character.character_Box.Top = 600;
+
+        //reset bullet position
+        bullet_1.bullet_Box.Left = 0;
+        bullet_1.bullet_Box.Top = 650;
+        bullet_1.bullet_Box.Visible = false;
+
+        bullet_2.bullet_Box.Left = 0;
+        bullet_2.bullet_Box.Top = 650;
+        bullet_2.bullet_Box.Visible = false;
+
+        game_Timer.Start();
     }
 }

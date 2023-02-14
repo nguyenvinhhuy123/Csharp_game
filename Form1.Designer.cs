@@ -55,7 +55,7 @@ partial class Form1
         this.Controls.Add(bullet_1.get_Bullet_Box());
 
         this.bullet_2 = new bullet();
-        this.Controls.Add(bullet_1.get_Bullet_Box());
+        this.Controls.Add(bullet_2.get_Bullet_Box());
 
         
         //key_event_Handler_initialize
