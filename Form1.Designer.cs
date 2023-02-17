@@ -10,6 +10,8 @@ partial class Form1
     private character_Class main_Character;
     private PlatForm main_Platform;
     private bullet bullet_1, bullet_2, bullet_3;
+    private System.Windows.Forms.Label score;
+
     /// <summary>
     ///  Clean up any resources being used.
     /// </summary>
@@ -39,8 +41,18 @@ partial class Form1
         this.ClientSize = new System.Drawing.Size(1600, 900);
         this.Text = "Cgame";
         this.SuspendLayout();
+        //score
+        this.score = new System.Windows.Forms.Label();
+        this.score.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.score.Location = new System.Drawing.Point(0,50);
+        this.score.Name = "score";
+        this.score.Size = new System.Drawing.Size(180, 85);
+        this.score.TabIndex = 0;
+        this.score.Text = "Score: 0";
+        this.score.TextAlign = System.Drawing.ContentAlignment.TopRight;
+        this.Controls.Add(this.score);
         //game timer
-        this.game_Timer = new System.Windows.Forms.Timer();
+        this.game_Timer = new System.Windows.Forms.Timer(this.components);
         this.game_Timer.Enabled = true;
         this.game_Timer.Interval = 30;
         this.game_Timer.Tick += new System.EventHandler(this.main_Game_Timer_Event);
