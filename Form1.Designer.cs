@@ -68,6 +68,7 @@ partial class Form1
 
         this.bullet_2 = new bullet();
         this.Controls.Add(bullet_2.get_Bullet_Box());
+        this.bullet_2.bullet_Box.BackColor = System.Drawing.Color.Green;
 
         
         //key_event_Handler_initialize

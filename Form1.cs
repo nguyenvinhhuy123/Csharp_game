@@ -4,17 +4,19 @@ public partial class Form1 : Form
 {   
     bool go_Left, go_Right, jumping, on_PLatform = true;
     int jump_force = 10;
+    int score_Txt = 0;
     public Form1()
     {
         InitializeComponent();
     }
     private void main_Game_Timer_Event(object sender, EventArgs e)
     {
+        score.Text = "Score: " + score_Txt;
         main_Character.character_Movement(go_Left,go_Right,ref jumping,ref jump_force, ref on_PLatform);
         if (bullet_1.Bullet_Visibility() == false) bullet_1.Random_Spawn_Handler();
-        bullet_1.bullet_Movement_Handler();
-        if (bullet_2.Bullet_Visibility() == false) bullet_2.Random_Spawn_Handler();
-        bullet_2.bullet_Movement_Handler();
+        bullet_1.bullet_Movement_Handler(ref score_Txt);
+        if (bullet_2.Bullet_Visibility() == false && bullet_1.bullet_Box.Left <= 805 && bullet_1.bullet_Box.Left >= 790) bullet_2.Random_Spawn_Handler();
+        bullet_2.bullet_Movement_Handler(ref score_Txt);
         foreach (Control ctrl in this.Controls)
         {
             if (ctrl is PictureBox)
@@ -39,6 +41,7 @@ public partial class Form1 : Form
                 }
             }
         }
+
     }
     private void KeyIsDown(object sender, KeyEventArgs e)
     {
@@ -88,6 +91,7 @@ public partial class Form1 : Form
         go_Right = false;
         jumping = false;
         on_PLatform = true;
+        score_Txt = 0;
         main_Character.character_Box.Left = 800;
         main_Character.character_Box.Top = 600;
 

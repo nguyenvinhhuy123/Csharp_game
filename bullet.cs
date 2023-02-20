@@ -33,13 +33,18 @@ public class bullet
         this.bullet_Box.Visible = true;
         this.bullet_Speed = init_Speed;
     }
-    public void bullet_Movement_Handler()
+    public void bullet_Movement_Handler(ref int score_Txt)
     {
-        if (bullet_Box.Left <= -101 || bullet_Box.Left > 2001)
+        if (bullet_Box.Visible && (bullet_Box.Left >= -101 || bullet_Box.Left < 2001))
         {
-            this.bullet_Box.Visible = false;
+            this.bullet_Box.Left += bullet_Speed;
         }
-        else this.bullet_Box.Left += bullet_Speed;
+        if (bullet_Box.Visible && (bullet_Box.Left <= -101 || bullet_Box.Left >= 2001))
+        {
+            score_Txt += 1;
+            this.bullet_Box.Visible = false;
+            this.bullet_Box.Left = -60;
+        }
     }
     public bool Bullet_Visibility()
     {
