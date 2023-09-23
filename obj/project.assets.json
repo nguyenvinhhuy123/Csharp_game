@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nvhuy\\Desktop\\c#game\\Csharp_game\\c#game.csproj",
+      "projectUniqueName": "C:\\Users\\nvhuy\\Desktop\\Code\\c#game\\Csharp_game\\c#game.csproj",
       "projectName": "c#game",
-      "projectPath": "C:\\Users\\nvhuy\\Desktop\\c#game\\Csharp_game\\c#game.csproj",
+      "projectPath": "C:\\Users\\nvhuy\\Desktop\\Code\\c#game\\Csharp_game\\c#game.csproj",
       "packagesPath": "C:\\Users\\nvhuy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nvhuy\\Desktop\\c#game\\Csharp_game\\obj\\",
+      "outputPath": "C:\\Users\\nvhuy\\Desktop\\Code\\c#game\\Csharp_game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nvhuy\\AppData\\Roaming\\NuGet\\NuGet.Config"

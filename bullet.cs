@@ -35,6 +35,11 @@ public class bullet
     }
     public void bullet_Movement_Handler(ref int score_Txt)
     {
+        if (score_Txt >= 999 && !bullet_Box.Visible)
+        {
+            this.bullet_Box.ClientSize = new Size(50,1000);
+            this.bullet_Box.Location = new System.Drawing.Point(0,0);
+        }
         if (bullet_Box.Visible && (bullet_Box.Left >= -101 || bullet_Box.Left < 2001))
         {
             this.bullet_Box.Left += bullet_Speed;
@@ -58,6 +63,7 @@ public class bullet
         int width_Index = random_Generator.Next(width_Random.Length);
         this.bullet_Box.Left = width_Random[width_Index];
         this.set_Bullet_Speed(bullet_Speed_Random[width_Index]);
+        
     }
 
 }

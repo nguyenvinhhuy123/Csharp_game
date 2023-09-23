@@ -1,5 +1,6 @@
 namespace c_game;
 
+
 public partial class Form1 : Form
 {   
     bool go_Left, go_Right, jumping, on_PLatform = true;
@@ -76,7 +77,7 @@ public partial class Form1 : Form
     }
     private void game_Over()
     {
-        var try_Again = MessageBox.Show("Try again??","BALLS",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+        var try_Again = MessageBox.Show("Try again??","SKILLISSUES?????? GG EZ",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
         if (try_Again == DialogResult.Yes)
         {
             //Restart game block
